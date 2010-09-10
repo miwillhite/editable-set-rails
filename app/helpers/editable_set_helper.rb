@@ -3,12 +3,14 @@
 #   Should form builder actually build a form? if so, editable-set js needs to be able to compensate for that
 
 module EditableSetHelper
-  def editable_form_for(*args, &block)
-    options = args.extract_options!.merge(:builder => EditableSetFormBuilder)
-    form_for(*(args + [options]), &block)
-  end
-  
+
   class EditableSetFormBuilder < ActionView::Helpers::FormBuilder
+    
+    def editable_form_for(*args, &block)
+      options = args.extract_options!.merge(:builder => EditableSetFormBuilder)
+      form_for(*(args + [options]), &block).gsub(/^<form/, "<div").gsub(/<\/form>/, "</div>").html_safe!
+    end
+    
     def text_field(object_name, method, options = {})      
       InstanceTag.new(object_name, method, self, options.delete(:object)).to_input_field_span_tag("text", options)
     end
