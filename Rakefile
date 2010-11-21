@@ -1,9 +1,7 @@
 require 'rake'
+<<<<<<< HEAD
 require 'rake/rdoctask'
 require 'rspec/core/rake_task'
-
-desc 'Default: run unit tests.'
-task :default => :test
 
 desc 'Test the editable_set plugin.'
 RSpec::Core::RakeTask.new(:spec) do |t|
