@@ -1,5 +1,4 @@
 require 'rake'
-<<<<<<< HEAD
 require 'rake/rdoctask'
 require 'rspec/core/rake_task'
 
