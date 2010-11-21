@@ -34,7 +34,7 @@ describe 'ApplicationHelper' do
       describe '#text_field' do
         it 'yields a span' do
           editable_form_for(@new_post, :url => '/hello') do |builder|
-            builder.text_field(:title).should =~ /span/
+            builder.text_field(:title).should =~ /span/ # TODO: replace with webrat's #have_selector
           end
         end
       end
@@ -106,22 +106,5 @@ describe 'ApplicationHelper' do
     end
   end
 
-  describe '#semantic_form_remote_for' do
-    it 'yields an instance of SemanticFormBuilder' do
-      pending
-      semantic_form_remote_for(@new_post, :url => '/hello') do |builder|
-        builder.class.should == ::Formtastic::SemanticFormBuilder
-      end
-    end
-  end
-
-  describe '#semantic_form_for_remote' do
-    it 'yields an instance of SemanticFormBuilder' do
-      pending
-      semantic_remote_form_for(@new_post, :url => '/hello') do |builder|
-        builder.class.should == ::Formtastic::SemanticFormBuilder
-      end
-    end
-  end
 
 end
